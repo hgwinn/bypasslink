@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bypass Key By Hoàng An</title>
+    <!-- Tailwind CSS & FontAwesome CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030712;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .font-cyber {
+            font-family: 'Orbitron', sans-serif;
+        }
+        /* Glassmorphism */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 255, 170, 0.2);
+            box-shadow: 0 0 40px rgba(0, 255, 170, 0.1);
+        }
+        .glass-input {
+            background: rgba(3, 7, 18, 0.6);
+            border: 1px solid rgba(0, 255, 170, 0.3);
+            color: #e5e7eb;
+        }
+        .glass-input:focus {
+            border-color: #00ffaa;
+            box-shadow: 0 0 15px rgba(0, 255, 170, 0.4);
+            outline: none;
+        }
+        /* Neon Glow Button */
+        .btn-cyber {
+            background: linear-gradient(135deg, #00ffaa 0%, #00aaff 100%);
+            color: #030712;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 170, 0.4);
+        }
+        .btn-cyber:hover {
+            box-shadow: 0 0 30px rgba(0, 255, 170, 0.8), 0 0 10px rgba(0, 170, 255, 0.8);
+            transform: translateY(-2px);
+        }
+        .btn-cyber:active {
+            transform: translateY(1px);
+        }
+        /* Canvas Background */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 255, 170, 0.2);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between relative selection:bg-cyan-500 selection:text-black">
+    <!-- Canvas Background -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Header / Navbar -->
+    <header class="w-full py-6 px-6 md:px-12 flex justify-between items-center z-10">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center shadow-lg shadow-cyan-500/30">
+                <i class="fa-solid fa-bolt text-gray-950 text-xl font-bold"></i>
+            </div>
+            <span class="font-cyber font-extrabold text-xl md:text-2xl tracking-wider bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+                HOÀNG AN TOOLS
+            </span>
+        </div>
+        <div class="flex items-center space-x-2 text-xs md:text-sm px-3 py-1.5 rounded-full glass-card text-emerald-400">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>System Online</span>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow flex items-center justify-center px-4 py-8 z-10">
+        <div class="w-full max-w-3xl glass-card rounded-3xl p-6 md:p-10 relative overflow-hidden">
+            <!-- Decorative Glow Orb -->
+            <div class="absolute -top-24 -right-24 w-48 h-48 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <!-- Title & Subtitle -->
+            <div class="text-center mb-8">
+                <h1 class="font-cyber font-extrabold text-3xl md:text-4xl lg:text-5xl tracking-tight text-white mb-3">
+                    Bypass Key By <span class="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">Hoàng An</span>
+                </h1>
+                <p class="text-gray-400 text-sm md:text-base">
+                    Hệ thống mở khóa & bypass link siêu tốc, an toàn và bảo mật.
+                </p>
+            </div>
+
+            <!-- Supported Services Badges -->
+            <div class="mb-6">
+                <label class="block text-xs font-semibold uppercase tracking-wider text-cyan-400 mb-2">Hỗ trợ các dịch vụ:</label>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 rounded-full text-xs font-medium bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 flex items-center gap-1.5">
+                        <i class="fa-solid fa-link"></i> Linkvertise
+                    </span>
+                    <span class="px-3 py-1 rounded-full text-xs font-medium bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 flex items-center gap-1.5">
+                        <i class="fa-solid fa-bolt"></i> Link4M
+                    </span>
+                    <span class="px-3 py-1 rounded-full text-xs font-medium bg-blue-950/60 border border-blue-500/30 text-blue-300 flex items-center gap-1.5">
+                        <i class="fa-solid fa-shield-halved"></i> Workink
+                    </span>
+                    <span class="px-3 py-1 rounded-full text-xs font-medium bg-teal-950/60 border border-teal-500/30 text-teal-300 flex items-center gap-1.5">
+                        <i class="fa-solid fa-rocket"></i> Boost.ink
+                    </span>
+                </div>
+            </div>
+
+            <!-- Input Form -->
+            <div class="space-y-4">
+                <div>
+                    <label for="urlInput" class="block text-sm font-medium text-gray-300 mb-2 flex justify-between">
+                        <span>Danh sách URL cần Bypass</span>
+                        <span class="text-xs text-gray-500">Mỗi link một dòng</span>
+                    </label>
+                    <textarea id="urlInput" rows="5" class="w-full rounded-2xl p-4 glass-input text-sm resize-y focus:ring-2 focus:ring-cyan-400 transition-all placeholder:text-gray-600" placeholder="Nhập danh sách link cần bypass tại đây (mỗi link một dòng)...
+https://linkvertise.com/...
+https://link4m.co/..."></textarea>
+                </div>
+
+                <button id="bypassBtn" class="w-full py-4 rounded-2xl btn-cyber font-cyber tracking-wider text-base uppercase flex items-center justify-center gap-2 cursor-pointer">
+                    <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+                    <span>Bypass Link Ngay</span>
+                </button>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="hidden my-8 text-center">
+                <div class="inline-block relative w-12 h-12 mb-3">
+                    <div class="absolute inset-0 rounded-full border-4 border-cyan-500/20"></div>
+                    <div class="absolute inset-0 rounded-full border-4 border-cyan-400 border-t-transparent animate-spin"></div>
+                </div>
+                <p class="text-cyan-400 font-medium text-sm animate-pulse">Đang xử lý và vượt tường lửa link...</p>
+            </div>
+
+            <!-- Results Section -->
+            <div id="resultSection" class="hidden mt-8 pt-6 border-t border-gray-800 space-y-4">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-cyber font-semibold text-lg text-emerald-400 flex items-center gap-2">
+                        <i class="fa-solid fa-square-poll-vertical"></i> Kết Quả Bypass
+                    </h3>
+                    <button id="clearBtn" class="text-xs text-gray-400 hover:text-red-400 transition-colors flex items-center gap-1">
+                        <i class="fa-solid fa-trash-can"></i> Xóa kết quả
+                    </button>
+                </div>
+                <div id="resultList" class="space-y-3 max-h-80 overflow-y-auto pr-1">
+                    <!-- Dynamic items inserted here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-6 text-center text-xs text-gray-500 z-10 border-t border-gray-900">
+        <p>&copy; 2026 Bypass Key By Hoàng An. All rights reserved. Designed for GitHub Pages.</p>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 transform translate-y-20 opacity-0 transition-all duration-300 z-50 bg-emerald-500 text-gray-950 font-semibold px-4 py-3 rounded-xl shadow-lg shadow-emerald-500/30 flex items-center gap-2 text-sm">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMessage">Đã sao chép vào bộ nhớ tạm!</span>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- Canvas Particles Animation ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const particlesArray = [];
+        const numberOfParticles = Math.min(window.innerWidth > 768 ? 60 : 30, 80);
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.8;
+                this.speedY = (Math.random() - 0.5) * 0.8;
+                this.color = Math.random() > 0.5 ? '#00ffaa' : '#00aaff';
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width) this.x = 0;
+                else if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                else if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        for (let i = 0; i < numberOfParticles; i++) {
+            particlesArray.push(new Particle());
+        }
+
+        function connectParticles() {
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a + 1; b < particlesArray.length; b++) {
+                    let dx = particlesArray[a].x - particlesArray[b].x;
+                    let dy = particlesArray[a].y - particlesArray[b].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 120) {
+                        ctx.strokeStyle = `rgba(0, 255, 170, ${0.15 * (1 - distance / 120)})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            connectParticles();
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // --- App Logic & API Call Mockup ---
+        const urlInput = document.getElementById('urlInput');
+        const bypassBtn = document.getElementById('bypassBtn');
+        const loadingState = document.getElementById('loadingState');
+        const resultSection = document.getElementById('resultSection');
+        const resultList = document.getElementById('resultList');
+        const clearBtn = document.getElementById('clearBtn');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // URL validation regex
+        function isValidURL(string) {
+            const res = string.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+            return (res !== null);
+        }
+
+        // Mock API Bypass Function (Ready for actual Backend API integration)
+        async function callBypassAPI(url) {
+            // HƯỚNG DẪN KẾT NỐI API BACKEND THỰC TẾ:
+            // Thay thế đoạn code dưới bằng lệnh fetch đến API backend của bạn:
+            // try {
+            //     const response = await fetch('https://api.yourdomain.com/bypass', {
+            //         method: 'POST',
+            //         headers: { 'Content-Type': 'application/json' },
+            //         body: JSON.stringify({ url: url })
+            //     });
+            //     const data = await response.json();
+            //     return data.resultUrl;
+            // } catch (e) {
+            //     throw new Error('API Error');
+            // }
+
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    if (url.includes('linkvertise')) {
+                        resolve('https://direct-download.example.com/file/' + Math.random().toString(36).substring(7));
+                    } else if (url.includes('link4m')) {
+                        resolve('https://destination-link.example.net/key?token=' + Math.random().toString(36).substring(7));
+                    } else {
+                        resolve('https://bypassed.hoangan.io/res/' + btoa(encodeURIComponent(url)).slice(0, 10));
+                    }
+                }, 1000 + Math.random() * 800);
+            });
+        }
+
+        bypassBtn.addEventListener('click', async () => {
+            const rawText = urlInput.value.trim();
+            if (!rawText) {
+                showToast('Vui lòng nhập ít nhất một URL!');
+                return;
+            }
+
+            const lines = rawText.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+            
+            // Reset & Show Loading
+            resultList.innerHTML = '';
+            resultSection.classList.remove('hidden');
+            loadingState.classList.remove('hidden');
+            bypassBtn.disabled = true;
+            bypassBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+            for (let i = 0; i < lines.length; i++) {
+                const currentUrl = lines[i];
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'p-4 rounded-2xl bg-gray-900/80 border border-gray-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-sm';
+
+                if (!isValidURL(currentUrl)) {
+                    itemDiv.innerHTML = `
+                        <div class="truncate max-w-md text-gray-400">
+                            <span class="text-xs text-gray-500 block">Link #${i + 1}</span>
+                            <span class="font-mono text-xs">${currentUrl}</span>
+                        </div>
+                        <span class="text-red-400 font-medium text-xs flex items-center gap-1 bg-red-950/40 px-3 py-1 rounded-full border border-red-500/30">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Link không hợp lệ
+                        </span>
+                    `;
+                    resultList.appendChild(itemDiv);
+                } else {
+                    itemDiv.innerHTML = `
+                        <div class="truncate max-w-md">
+                            <span class="text-xs text-cyan-400 block font-medium">Link #${i + 1}</span>
+                            <span class="font-mono text-xs text-gray-300">${currentUrl}</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-yellow-400 text-xs bg-yellow-950/40 px-3 py-1 rounded-full border border-yellow-500/30">
+                            <i class="fa-solid fa-spinner animate-spin"></i> Đang bypass...
+                        </div>
+                    `;
+                    resultList.appendChild(itemDiv);
+
+                    try {
+                        const bypassedResult = await callBypassAPI(currentUrl);
+                        
+                        itemDiv.innerHTML = `
+                            <div class="truncate max-w-md">
+                                <span class="text-xs text-emerald-400 block font-medium">Link #${i + 1} (Thành công)</span>
+                                <a href="${bypassedResult}" target="_blank" class="font-mono text-xs text-cyan-400 hover:underline truncate block">${bypassedResult}</a>
+                            </div>
+                            <button onclick="copyToClipboard('${bypassedResult}', this)" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/40 text-cyan-300 font-medium text-xs flex items-center gap-1.5 transition-all cursor-pointer">
+                                <i class="fa-regular fa-copy"></i> Sao chép
+                            </button>
+                        `;
+                    } catch (err) {
+                        itemDiv.innerHTML = `
+                            <div class="connector truncate max-w-md">
+                                <span class="text-xs text-gray-400 block">Link #${i + 1}</span>
+                                <span class="font-mono text-xs">${currentUrl}</span>
+                            </div>
+                            <span class="text-red-400 font-medium text-xs flex items-center gap-1 bg-red-950/40 px-3 py-1 rounded-full border border-red-500/30">
+                                <i class="fa-solid fa-circle-xmark"></i> Lỗi xử lý
+                            </span>
+                        `;
+                    }
+                }
+            }
+
+            loadingState.classList.add('hidden');
+            bypassBtn.disabled = false;
+            bypassBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        });
+
+        // Global Copy Function
+        window.copyToClipboard = function(text, btnElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Đã sao chép link thành công!');
+                const originalHTML = btnElement.innerHTML;
+                btnElement.innerHTML = '<i class="fa-solid fa-check text-emerald-400"></i> Đã chép';
+                btnElement.classList.add('bg-emerald-500/20', 'border-emerald-500/40', 'text-emerald-300');
+                setTimeout(() => {
+                    btnElement.innerHTML = originalHTML;
+                    btnElement.classList.remove('bg-emerald-500/20', 'border-emerald-500/40', 'text-emerald-300');
+                }, 2000);
+            }).catch(err => {
+                showToast('Sao chép thất bại!');
+            });
+        };
+
+        clearBtn.addEventListener('click', () => {
+            resultSection.classList.add('hidden');
+            resultList.innerHTML = '';
+            urlInput.value = '';
+            showToast('Đã làm sạch khu vực kết quả!');
+        });
+    </script>
+</body>
+</html>
